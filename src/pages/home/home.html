@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-card>
+      <button *ngIf="isBar==5" ion-button color="light" (click)="openModal()" style="font-size:30px;  margin-left: 37%;">+</button>
+    </ion-card>
+    <ion-card *ngIf="isBar==0">
+      <ion-card-header>
+          Doughnut Chart
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="isBar==1">
+      <ion-card-header>
+        Line Chart
+      </ion-card-header>
+      <ion-card-content>
+         <canvas #lineCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-card >
+    <ion-card-header>
+      Bar Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
