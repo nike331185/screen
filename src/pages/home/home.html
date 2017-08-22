@@ -12,6 +12,8 @@
       <button *ngIf="isBar==5" ion-button color="light" (click)="openModal()" style="font-size:30px;  margin-left: 37%;">+</button>
     </ion-card>
     <ion-card *ngIf="isBar==0">
+
+       <button *ngIf="isBar==0" ion-button (click)="colseBar()" right color="light">x</button>
       <ion-card-header>
           Doughnut Chart
       </ion-card-header>
@@ -20,6 +22,7 @@
       </ion-card-content>
     </ion-card>
     <ion-card *ngIf="isBar==1">
+      <button *ngIf="isBar==1" ion-button color="light" (click)="colseBar()" style="font-size:30px;  margin-left: 37%;">x</button>
       <ion-card-header>
         Line Chart
       </ion-card-header>

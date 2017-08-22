@@ -164,4 +164,7 @@ export class HomePage {
 
       }
     }
+    colseBar(){
+       this.isBar = 5;
+    }
 }
