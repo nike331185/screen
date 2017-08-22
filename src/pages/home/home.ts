@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,ElementRef,ViewContainerRef} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { SampleModalPage } from '../sample-modal/sample-modal';
@@ -8,9 +8,25 @@ import { Chart } from 'chart.js';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  @ViewChild('barCanvas') barCanvas;
-  @ViewChild('doughnutCanvas') doughnutCanvas;
-  @ViewChild('lineCanvas') lineCanvas;
+
+ // @ViewChild('doughnutCanvas') doughnutCanvas1:ElementRef;
+
+
+  private doughnutCanvas:ElementRef;
+  private barCanvas:ElementRef;
+  private lineCanvas:ElementRef;
+  @ViewChild('doughnutCanvas') set doughnut(elRef: ElementRef) {
+      this.doughnutCanvas = elRef;
+  }
+    @ViewChild('barCanvas') set bar(elRef: ElementRef) {
+      this.barCanvas = elRef;
+  }
+   @ViewChild('lineCanvas') set line(elRef: ElementRef) {
+      this.lineCanvas = elRef;
+  }
+
+
+
   barChart: any;
   isShow: boolean = false;
   isBar: number = 5;
@@ -21,10 +37,9 @@ export class HomePage {
   constructor(public navCtrl: NavController,public modalCtrl: ModalController) {
 
   }
-  ngAfterViewInit(): void {
-    console.log("543");
- }
-  ionViewDidEnter() {
+  ngAfterViewInit() {
+
+
     console.log("123");
     this.barChart = new Chart(this.barCanvas.nativeElement, {
 
@@ -101,7 +116,9 @@ export class HomePage {
 
   }
   isShowdata() {
-    if( this.isBar ==0){this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+    if( this.isBar ==0){
+
+      setTimeout(() => { this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'doughnut',
             data: {
                 labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -126,7 +143,8 @@ export class HomePage {
                     ]
                 }]
             }
-        });
+        }); });
+
       }
     else if(this.isBar ==1){
       this.lineChart = new Chart(this.lineCanvas.nativeElement, {
